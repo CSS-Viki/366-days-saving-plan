@@ -5,16 +5,16 @@ function calculateTotalSavings() {
   let totalSavings = 0;
   let savingsArray = [];
 
-
   const unorderedList = document.createElement("ul");
-  unorderedList.classList.add("list-items");
 
   for (let currDay = 1; currDay <= numberOfDaysInYear; currDay++) {
     totalSavings += currDay;
-    savingsArray.push(`Day <strong>${currDay}</strong>, you should save Ksh<strong>${currDay}</strong>. Total you have saved is Ksh<strong>${totalSavings}</strong>`);
+    savingsArray.push(
+      `Day <strong>${currDay}</strong>, save Ksh<strong>${currDay}</strong> in your account. Total you have saved is Ksh<strong>${totalSavings}.</strong>`
+    );
   }
 
-  savingsArray.forEach(saving => {
+  savingsArray.forEach((saving) => {
     const listItem = document.createElement("li");
     listItem.classList.add("lists");
     listItem.innerHTML = saving;
@@ -24,4 +24,23 @@ function calculateTotalSavings() {
   savings.appendChild(unorderedList);
 }
 
+savings.addEventListener(
+  "click",
+  (e) => {
+    if (e.target.tagName === "LI") {
+      e.target.classList.toggle("checked");
+      saveData();
+    }
+  },
+  false
+);
+
+const saveData = () => {
+  localStorage.setItem("data", savings.innerHTML);
+};
+const showTask = () => {
+  savings.innerHTML = localStorage.getItem("data");
+};
+
+showTask();
 calculateTotalSavings();

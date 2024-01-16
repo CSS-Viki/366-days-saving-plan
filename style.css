@@ -24,26 +24,49 @@ body {
   color: transparent;
 }
 #saving-details {
-  padding: 2em;
+  
+  padding-block: 3em;
+  padding-inline: 4em 3em;
   background-color: #fff;
   margin-block-start: 2em;
   border-radius: 16px;
+  cursor: pointer;
   box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.34);
   -webkit-box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.34);
   -moz-box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.34);
 }
-
 .lists {
+  position: relative;
   font-size: clamp(0.8rem, 0.6091rem + 1.0182vw, 1.5rem);
   font-weight: 400;
   list-style-type: none;
   padding-block: 20px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #ccc;
   line-height: 1.5;
 }
 .lists:last-child {
   border-bottom: none;
 }
+.lists::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-image: url("./images/unchecked.png");
+  background-size: cover;
+  background-position: center;
+  left: -40px;
+  top: 40%;
+}
+.lists.checked {
+  color: #ccc;
+  text-decoration: line-through;
+}
+.lists.checked::before {
+  background-image: url("./images/checked.png");
+}
+
 .attribution {
   display: flex;
   justify-content: space-between;
