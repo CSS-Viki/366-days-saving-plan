@@ -29,7 +29,6 @@ function calculateTotalSavings() {
 savings.addEventListener("click", (e) => {
   if (e.target.tagName === "LI") {
     e.target.classList.toggle("checked");
-    saveData();
   }
 });
 
